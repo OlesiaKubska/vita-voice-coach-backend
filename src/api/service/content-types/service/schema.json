@@ -9,10 +9,14 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "shortDescription": {
+      "type": "text",
+      "required": true
     },
     "description": {
       "type": "richtext"
@@ -22,14 +26,48 @@
       "targetField": "title"
     },
     "icon": {
+      "type": "enumeration",
+      "enum": [
+        "FaMicrophone",
+        "FaMicrophoneAlt",
+        "FaMusic",
+        "FaUsers",
+        "FaChalkboardTeacher",
+        "FaHeadphones",
+        "FaStar",
+        "FaComments",
+        "FaBuilding",
+        "FaVideo",
+        "FaHeart",
+        "FaFemale",
+        "FaPodcast",
+        "FaLaptop",
+        "FaUserGraduate",
+        "FaLandmark"
+      ],
+      "default": "FaStar"
+    },
+    "image": {
       "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+      "multiple": false,
+      "allowedTypes": ["images"]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Śpiew",
+        "Rozwój osobisty",
+        "Wystąpienia publiczne",
+        "Kobiety",
+        "Młodzież",
+        "Online",
+        "Korporacje",
+        "Nagrania"
       ]
+    },
+    "highlight": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

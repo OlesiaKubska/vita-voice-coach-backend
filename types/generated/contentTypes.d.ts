@@ -412,14 +412,45 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.Enumeration<
+      [
+        '\u015Apiew',
+        'Rozw\u00F3j osobisty',
+        'Wyst\u0105pienia publiczne',
+        'Kobiety',
+        'M\u0142odzie\u017C',
+        'Online',
+        'Korporacje',
+        'Nagrania',
+      ]
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.RichText;
-    icon: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    highlight: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    icon: Schema.Attribute.Enumeration<
+      [
+        'FaMicrophone',
+        'FaMicrophoneAlt',
+        'FaMusic',
+        'FaUsers',
+        'FaChalkboardTeacher',
+        'FaHeadphones',
+        'FaStar',
+        'FaComments',
+        'FaBuilding',
+        'FaVideo',
+        'FaHeart',
+        'FaFemale',
+        'FaPodcast',
+        'FaLaptop',
+        'FaUserGraduate',
+        'FaLandmark',
+      ]
+    > &
+      Schema.Attribute.DefaultTo<'FaStar'>;
+    image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -427,8 +458,9 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    shortDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     slug: Schema.Attribute.UID<'title'>;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
