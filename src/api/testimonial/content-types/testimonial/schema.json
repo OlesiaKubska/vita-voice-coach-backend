@@ -15,10 +15,13 @@
       "type": "string"
     },
     "text": {
-      "type": "blocks"
+      "type": "text"
     },
     "rating": {
-      "type": "integer"
+      "type": "integer",
+      "default": 0,
+      "min": 1,
+      "max": 5
     },
     "photo": {
       "type": "media",
