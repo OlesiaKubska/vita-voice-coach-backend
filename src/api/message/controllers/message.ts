@@ -12,7 +12,7 @@ export default factories.createCoreController('api::message.message', ({ strapi 
     }
 
     // 2) Get UA and IP
-    const ua = ctx.request.headers['user-agent'] || '';
+    const ua = ctx.request.headers['user-agent'] as string || '';
     const ip =
       String(ctx.request.headers['x-forwarded-for'] || '').split(',')[0].trim() ||
       ctx.request.ip;
@@ -23,6 +23,7 @@ export default factories.createCoreController('api::message.message', ({ strapi 
         ...data,
         ip,
         userAgent: ua,
+        read: false,
       },
     });
 
@@ -56,30 +57,36 @@ export default factories.createCoreController('api::message.message', ({ strapi 
       strapi.log.error('Error sending email:', error);
     }
 
-    ctx.body = { data: entry };
-    return ctx.body = { ok: true, id: entry.id };
+    ctx.status = 201;
+    return (ctx.body = { ok: true, id: entry.id });
+  },
+
+  async markAsRead(ctx) {
+    const { id } = ctx.params;
+
+    const exists = await strapi.entityService.findOne('api::message.message', id);
+    if (!exists) {
+      return ctx.notFound('Message not found');
+    }
+
+    const updated = await strapi.entityService.update('api::message.message', id, {
+      data: { read: true },
+    });
+
+    return (ctx.body = { ok: true, data: updated });
   },
 }));
 
 function escapeHtml(str: string): string {
-    if (typeof str !== 'string') {
-        return '';
+  if (typeof str !== 'string') return '';
+  return str.replace(/[&<>"']/g, (m) => {
+    switch (m) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#039;';
+      default: return m;
     }
-    return str.replace(/[&<>"']/g, (m) => {
-        switch (m) {
-            case '&':
-                return '&amp;';
-            case '<':
-                return '&lt;';
-            case '>':
-                return '&gt;';
-            case '"':
-                return '&quot;';
-            case "'":
-                return '&#039;';
-            default:
-                return m;
-        }
-    });
+  });
 }
-

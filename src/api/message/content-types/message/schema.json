@@ -25,6 +25,10 @@
     },
     "userAgent": {
       "type": "string"
+    },
+    "read": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

@@ -398,6 +398,7 @@ export interface ApiMessageMessage extends Struct.CollectionTypeSchema {
     message: Schema.Attribute.Blocks;
     name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    read: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
