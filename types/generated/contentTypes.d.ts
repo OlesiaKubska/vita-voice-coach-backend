@@ -447,14 +447,12 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
   attributes: {
     category: Schema.Attribute.Enumeration<
       [
-        '\u015Apiew',
+        'Lekcje',
         'Rozw\u00F3j osobisty',
-        'Wyst\u0105pienia publiczne',
-        'Kobiety',
-        'M\u0142odzie\u017C',
-        'Online',
-        'Korporacje',
+        'Wyst\u0105pienia',
+        'Kursy online',
         'Nagrania',
+        'Warsztaty',
       ]
     >;
     createdAt: Schema.Attribute.DateTime;

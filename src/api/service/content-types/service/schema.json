@@ -55,14 +55,12 @@
     "category": {
       "type": "enumeration",
       "enum": [
-        "Śpiew",
+        "Lekcje",
         "Rozwój osobisty",
-        "Wystąpienia publiczne",
-        "Kobiety",
-        "Młodzież",
-        "Online",
-        "Korporacje",
-        "Nagrania"
+        "Wystąpienia",
+        "Kursy online",
+        "Nagrania",
+        "Warsztaty"
       ]
     },
     "highlight": {
