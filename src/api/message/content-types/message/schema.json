@@ -18,7 +18,7 @@
       "type": "email"
     },
     "message": {
-      "type": "blocks"
+      "type": "text"
     },
     "ip": {
       "type": "string"
