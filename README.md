@@ -1,4 +1,4 @@
-# 🗄️ Vita Voice Coach — Backend (Strapi CMS)
+# 🗄️ Vita Voice Coach - Backend (Strapi CMS)
 
 Backend API service for **Vita Voice**, a platform offering vocal coaching, blog content publishing, and user contact submissions.
 
@@ -99,7 +99,7 @@ ENCRYPTION_KEY=toBeModified
 ```
 ---
 
-## 🛢️ Database — Local (SQLite)
+## 🛢️ Database - Local (SQLite)
 ```
 DATABASE_CLIENT=sqlite
 DATABASE_FILENAME=.tmp/data.db
@@ -107,7 +107,7 @@ DATABASE_SSL=false
 ```
 ---
 
-## 🐘 Database — Production (PostgreSQL)
+## 🐘 Database - Production (PostgreSQL)
 ```
 DATABASE_URL=
 DATABASE_SSL=true
